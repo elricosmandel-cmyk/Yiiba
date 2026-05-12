@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yiib-Ya — Services à domicile à Ouagadougou</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:#F47B20;--orange-light:#FFF3E8;--orange-dark:#C45E0A;
+  --green:#2A7A3B;--green-light:#E8F5EC;--green-dark:#1A5228;
+  --white:#FFFFFF;--gray-50:#F9F9F9;--gray-100:#F2F2F2;
+  --gray-200:#E5E5E5;--gray-400:#AAAAAA;--gray-600:#666666;--gray-900:#111111;
+  --font-head:'Sora',sans-serif;--font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--gray-900);background:var(--white);line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--gray-200);padding:0 6%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--orange);text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:var(--green)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray-600);font-size:0.9rem;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{background:var(--orange)!important;color:white!important;padding:0.5rem 1.4rem!important;border-radius:50px!important;font-weight:600!important}
+.nav-cta:hover{background:var(--orange-dark)!important;color:white!important}
+
+.hero{min-height:100vh;background:linear-gradient(150deg,#FFF8F2 0%,#F2FAF4 100%);display:flex;align-items:center;padding:100px 6% 60px;position:relative;overflow:hidden}
+.hero-blob1{position:absolute;top:-150px;right:-150px;width:550px;height:550px;background:radial-gradient(circle,rgba(244,123,32,0.13) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-blob2{position:absolute;bottom:-120px;left:-120px;width:450px;height:450px;background:radial-gradient(circle,rgba(42,122,59,0.11) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);color:var(--orange-dark);font-size:0.75rem;font-weight:700;padding:0.4rem 1rem;border-radius:50px;margin-bottom:1.5rem;letter-spacing:0.8px;text-transform:uppercase}
+.hero-tag::before{content:'';width:7px;height:7px;background:var(--orange);border-radius:50%;animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.4)}}
+.hero h1{font-family:var(--font-head);font-size:clamp(2rem,3.5vw,3.4rem);font-weight:800;line-height:1.12;color:var(--gray-900);margin-bottom:1.25rem;letter-spacing:-1.5px}
+.ho{color:var(--orange)}.hg{color:var(--green)}
+.hero-sub{font-size:1.05rem;color:var(--gray-600);margin-bottom:1.8rem;max-width:460px;line-height:1.75}
+.hero-langs{display:flex;gap:0.5rem;margin-bottom:2.2rem;flex-wrap:wrap}
+.lang-pill{background:var(--green-light);color:var(--green-dark);font-size:0.75rem;font-weight:700;padding:0.3rem 0.9rem;border-radius:50px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:white;border:none;padding:0.9rem 2rem;border-radius:50px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block;box-shadow:0 4px 20px rgba(244,123,32,0.3)}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 25px rgba(244,123,32,0.35)}
+.btn-secondary{background:transparent;color:var(--green);border:2px solid var(--green);padding:0.9rem 2rem;border-radius:50px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-block}
+.btn-secondary:hover{background:var(--green);color:white;transform:translateY(-2px)}
+
+.hero-visual{display:flex;justify-content:center;align-items:center}
+.phone{width:290px;background:white;border-radius:42px;box-shadow:0 40px 100px rgba(0,0,0,0.13),0 0 0 8px rgba(244,123,32,0.1);overflow:hidden;border:1px solid var(--gray-200)}
+.ph-top{background:var(--orange);padding:2rem 1.5rem 1.25rem;color:white}
+.ph-logo{font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:0.2rem}
+.ph-sub{font-size:0.72rem;opacity:0.85;margin-bottom:1rem}
+.ph-search{background:rgba(255,255,255,0.22);border-radius:50px;padding:0.55rem 1rem;font-size:0.78rem;color:white;opacity:0.9}
+.ph-body{padding:1rem 1.2rem}
+.ph-section{font-size:0.7rem;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:0.75rem;margin-top:0.5rem}
+.ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1rem}
+.ph-card{background:var(--gray-50);border-radius:14px;padding:0.75rem;display:flex;flex-direction:column;align-items:flex-start;gap:4px;border:1px solid var(--gray-100)}
+.ph-icon{font-size:1.4rem;margin-bottom:2px}
+.ph-card-label{font-size:0.72rem;font-weight:700;color:var(--gray-900)}
+.ph-card-sub{font-size:0.65rem;color:var(--gray-400)}
+.ph-status{font-size:0.72rem;color:var(--gray-600);background:var(--green-light);border-radius:10px;padding:0.6rem 0.8rem;display:flex;align-items:center;gap:8px}
+.ph-dot{width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0}
+
+.statsbar{background:var(--gray-900);padding:2.5rem 6%}
+.statsbar-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--font-head);font-size:2.2rem;font-weight:800;color:var(--orange);line-height:1}
+.stat-label{font-size:0.82rem;color:rgba(255,255,255,0.55);margin-top:0.4rem}
+
+section{padding:5rem 6%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:var(--orange-light);color:var(--orange-dark);font-size:0.72rem;font-weight:700;padding:0.3rem 0.9rem;border-radius:50px;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:1rem}
+.section-tag.green{background:var(--green-light);color:var(--green-dark)}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-0.8px;line-height:1.2;margin-bottom:1rem}
+.section-desc{font-size:1rem;color:var(--gray-600);max-width:580px;line-height:1.75}
+
+/* COMMENT CA MARCHE — MODELE CENTRALISE */
+.how-bg{background:var(--gray-50)}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.step{display:flex;flex-direction:column;align-items:flex-start}
+.step-num{width:52px;height:52px;background:var(--orange);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin-bottom:1.25rem;flex-shrink:0}
+.step-title{font-family:var(--font-head);font-size:1.05rem;font-weight:700;margin-bottom:0.5rem}
+.step-desc{font-size:0.88rem;color:var(--gray-600);line-height:1.65}
+
+/* PROMESSE CENTRALE */
+.promesse{background:var(--orange);padding:4rem 6%;text-align:center;color:white}
+.promesse-inner{max-width:800px;margin:0 auto}
+.promesse h2{font-family:var(--font-head);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;margin-bottom:1rem;color:white;letter-spacing:-0.8px}
+.promesse p{font-size:1.05rem;opacity:0.9;line-height:1.75;margin-bottom:2rem}
+.promesse-pills{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.promesse-pill{background:rgba(255,255,255,0.2);color:white;font-size:0.85rem;font-weight:600;padding:0.5rem 1.2rem;border-radius:50px;border:1px solid rgba(255,255,255,0.3)}
+
+/* SERVICES */
+.services-bg{background:var(--white)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.cat-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:22px;padding:1.75rem;transition:all 0.25s;position:relative;overflow:hidden}
+.cat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--orange);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+.cat-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08);transform:translateY(-4px);border-color:transparent;background:white}
+.cat-card:hover::before{transform:scaleX(1)}
+.cat-card.autres{border:2px dashed var(--gray-200)}
+.cat-card.autres::before{background:var(--green)}
+.cat-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
+.cat-emoji{font-size:1.8rem;width:52px;height:52px;background:var(--orange-light);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cat-card.autres .cat-emoji{background:var(--green-light)}
+.cat-title{font-family:var(--font-head);font-size:1.05rem;font-weight:700;color:var(--gray-900)}
+.cat-subtitle{font-size:0.78rem;color:var(--gray-400);margin-top:2px}
+.services-list{display:flex;flex-direction:column;gap:0.5rem}
+.service-item{display:flex;align-items:center;gap:10px;font-size:0.88rem;color:var(--gray-600);padding:0.45rem 0;border-bottom:1px solid var(--gray-200)}
+.service-item:last-child{border-bottom:none}
+.service-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;flex-shrink:0}
+.cat-card.autres .service-dot{background:var(--green)}
+
+/* EQUIPE */
+.equipe-bg{background:linear-gradient(135deg,#FFF8F2,#F2FAF4)}
+.equipe-intro{max-width:650px;margin-bottom:3rem}
+.equipe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:700px}
+.equipe-card{background:white;border:1px solid var(--gray-200);border-radius:24px;padding:2rem;display:flex;flex-direction:column;align-items:center;text-align:center;transition:all 0.25s}
+.equipe-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08);transform:translateY(-4px)}
+.equipe-avatar{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:1rem;border:3px solid var(--orange-light)}
+.equipe-name{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--gray-900);margin-bottom:0.25rem}
+.equipe-role{font-size:0.82rem;color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1rem}
+.equipe-desc{font-size:0.85rem;color:var(--gray-600);line-height:1.6;margin-bottom:1.25rem}
+.equipe-contact{display:flex;flex-direction:column;gap:0.5rem;width:100%}
+.equipe-contact a{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.82rem;color:var(--gray-600);text-decoration:none;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:10px;padding:0.5rem 1rem;transition:all 0.2s;font-weight:500}
+.equipe-contact a:hover{background:var(--orange-light);color:var(--orange-dark);border-color:var(--orange)}
+.equipe-badge{background:var(--green-light);color:var(--green-dark);font-size:0.72rem;font-weight:700;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:1rem}
+
+/* POURQUOI */
+.why-bg{background:var(--gray-50)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:3rem}
+.why-card{background:white;border:1px solid var(--gray-200);border-radius:20px;padding:1.75rem}
+.why-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.why-title{font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+.why-desc{font-size:0.86rem;color:var(--gray-600);line-height:1.6}
+
+/* TEMOIGNAGES */
+.temoignages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.temoignage{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:20px;padding:1.75rem}
+.temoignage-text{font-size:0.92rem;color:var(--gray-600);line-height:1.7;margin-bottom:1.25rem;font-style:italic}
+.temoignage-author{display:flex;align-items:center;gap:10px}
+.temoignage-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.temoignage-name{font-family:var(--font-head);font-size:0.88rem;font-weight:700}
+.temoignage-role{font-size:0.75rem;color:var(--gray-400)}
+.stars{color:var(--orange);font-size:0.9rem;margin-bottom:1rem}
+
+/* CONTACT */
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.4rem}
+.form-group label{font-size:0.85rem;font-weight:600;color:var(--gray-900)}
+.form-group input,.form-group select,.form-group textarea{border:1.5px solid var(--gray-200);border-radius:12px;padding:0.8rem 1rem;font-family:var(--font-body);font-size:0.9rem;color:var(--gray-900);background:white;transition:border-color 0.2s;outline:none;resize:vertical}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.contact-info{display:flex;flex-direction:column;gap:1.25rem;margin-top:2.5rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem}
+.contact-icon{width:48px;height:48px;background:var(--orange-light);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.contact-item-text h4{font-family:var(--font-head);font-size:0.95rem;font-weight:700;margin-bottom:0.2rem}
+.contact-item-text p{font-size:0.88rem;color:var(--gray-600)}
+.contact-item-text a{font-size:0.88rem;color:var(--orange);text-decoration:none;font-weight:600}
+.contact-item-text a:hover{text-decoration:underline}
+
+footer{background:var(--gray-900);padding:3rem 6%}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-logo{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--orange)}
+.footer-logo span{color:white}
+.footer-tagline{font-size:0.82rem;margin-top:0.25rem;color:rgba(255,255,255,0.4)}
+.footer-right{text-align:right;font-size:0.82rem;color:rgba(255,255,255,0.5)}
+.footer-right a{color:rgba(255,255,255,0.5);text-decoration:none;margin-left:1rem}
+.footer-right a:hover{color:var(--orange)}
+
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  .hero-inner,.contact-inner{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .statsbar-inner{grid-template-columns:repeat(2,1fr)}
+  .steps-grid,.temoignages-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .equipe-grid{grid-template-columns:1fr;max-width:400px}
+}
+@media(max-width:600px){
+  .statsbar-inner{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .cat-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Yiib<span>-Ya</span></a>
+  <ul class="nav-links">
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#services">Nos services</a></li>
+    <li><a href="#equipe">Notre équipe</a></li>
+    <li><a href="#contact" class="nav-cta">Nous contacter</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blob1"></div>
+  <div class="hero-blob2"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Ouagadougou · Burkina Faso</div>
+      <h1>Votre famille mérite le <span class="ho">meilleur</span> au <span class="hg">quotidien</span></h1>
+      <p class="hero-sub">Commandez un service, on s'occupe de tout. Ménage, réparations, courses, cuisine, transport — un seul appel suffit, Yiib-Ya gère le reste.</p>
+      <div class="hero-langs">
+        <span class="lang-pill">🇫🇷 Français</span>
+        <span class="lang-pill">Mooré</span>
+        <span class="lang-pill">Dioula</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Commander un service</a>
+        <a href="#services" class="btn-secondary">Voir nos services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone">
+        <div class="ph-top">
+          <div class="ph-logo">Yiib-Ya</div>
+          <div class="ph-sub">Viens ici · Services à domicile · Ouaga</div>
+          <div class="ph-search">🔍 De quoi avez-vous besoin ?</div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-section">Nos catégories</div>
+          <div class="ph-grid">
+            <div class="ph-card"><span class="ph-icon">🧹</span><span class="ph-card-label">Ménage</span><span class="ph-card-sub">Dispo aujourd'hui</span></div>
+            <div class="ph-card"><span class="ph-icon">🔧</span><span class="ph-card-label">Réparations</span><span class="ph-card-sub">Urgent OK</span></div>
+            <div class="ph-card"><span class="ph-icon">🛒</span><span class="ph-card-label">Courses</span><span class="ph-card-sub">Livraison rapide</span></div>
+            <div class="ph-card"><span class="ph-icon">👨‍🍳</span><span class="ph-card-label">Cuisine</span><span class="ph-card-sub">À domicile</span></div>
+          </div>
+          <div class="ph-section">Statut en temps réel</div>
+          <div class="ph-status"><span class="ph-dot"></span>Yiib-Ya — En ligne · Répond en &lt; 5 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="statsbar">
+  <div class="statsbar-inner">
+    <div class="stat-item fade-up"><div class="stat-num">7</div><div class="stat-label">Catégories de services</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">1h</div><div class="stat-label">Délai d'intervention max</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">3</div><div class="stat-label">Langues disponibles</div></div>
+    <div class="stat-item fade-up"><div class="stat-num">7j/7</div><div class="stat-label">Disponibilité complète</div></div>
+  </div>
+</div>
+
+<!-- PROMESSE -->
+<div class="promesse">
+  <div class="promesse-inner">
+    <h2>Vous commandez. Nous gérons tout.</h2>
+    <p>Pas besoin de chercher un prestataire vous-même. Vous nous dites ce dont vous avez besoin, et notre équipe trouve la bonne personne, l'envoie chez vous, et s'assure que le travail est bien fait.</p>
+    <div class="promesse-pills">
+      <span class="promesse-pill">✅ Prestataires vérifiés par nous</span>
+      <span class="promesse-pill">⚡ Intervention en moins d'1h</span>
+      <span class="promesse-pill">🛡️ Qualité garantie</span>
+      <span class="promesse-pill">💳 Orange Money & Moov Money</span>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENT CA MARCHE -->
+<section id="comment" class="how-bg">
+  <div class="section-inner">
+    <span class="section-tag green">Simple & rapide</span>
+    <h2 class="section-title">Comment ça marche ?</h2>
+    <p class="section-desc">Trois étapes simples. Vous vous occupez de votre famille, on s'occupe du reste.</p>
+    <div class="steps-grid">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <div class="step-title">Vous nous contactez</div>
+        <div class="step-desc">Par téléphone, WhatsApp ou formulaire — dites-nous simplement ce dont vous avez besoin, dans la langue que vous préférez : français, mooré ou dioula.</div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <div class="step-title">On gère tout pour vous</div>
+        <div class="step-desc">Notre équipe identifie le bon prestataire disponible, le mandate et organise l'intervention à votre domicile. Vous n'avez rien d'autre à faire.</div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <div class="step-title">Le service est rendu</div>
+        <div class="step-desc">Le prestataire intervient chez vous. Vous payez en Orange Money, Moov Money ou espèces. Votre satisfaction est notre priorité absolue.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-inner">
+    <span class="section-tag">Nos services</span>
+    <h2 class="section-title">Tout pour le bien-être de votre foyer</h2>
+    <p class="section-desc">7 catégories de services couvrant chaque besoin du quotidien d'une famille à Ouagadougou. Un seul contact pour tout régler.</p>
+    <div class="cat-grid">
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">🏠</div><div><div class="cat-title">Maison & Propreté</div><div class="cat-subtitle">Gardez votre maison impeccable</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Femme / Homme de ménage</div>
+          <div class="service-item"><span class="service-dot"></span>Laveur / Laveuse de linge</div>
+          <div class="service-item"><span class="service-dot"></span>Repassage & blanchisserie</div>
+          <div class="service-item"><span class="service-dot"></span>Entretien de la cour & jardin</div>
+        </div>
+      </div>
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">🔧</div><div><div class="cat-title">Réparations & Urgences</div><div class="cat-subtitle">Dépannage rapide à domicile</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Plombier (urgence disponible)</div>
+          <div class="service-item"><span class="service-dot"></span>Électricien</div>
+          <div class="service-item"><span class="service-dot"></span>Frigoriste (panne de frigo)</div>
+          <div class="service-item"><span class="service-dot"></span>Maçon & petits travaux</div>
+        </div>
+      </div>
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">🛒</div><div><div class="cat-title">Courses & Alimentation</div><div class="cat-subtitle">Marché et cuisine à domicile</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Courses au marché & supermarché</div>
+          <div class="service-item"><span class="service-dot"></span>Livraison de produits frais</div>
+          <div class="service-item"><span class="service-dot"></span>Cuisinier à domicile (repas quotidiens)</div>
+          <div class="service-item"><span class="service-dot"></span>Cuisinier pour fêtes & cérémonies</div>
+        </div>
+      </div>
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">👨‍👩‍👧</div><div><div class="cat-title">Famille & Enfants</div><div class="cat-subtitle">Pour le bonheur de vos petits</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Garde d'enfants / Nounou</div>
+          <div class="service-item"><span class="service-dot"></span>Répétiteur scolaire à domicile</div>
+          <div class="service-item"><span class="service-dot"></span>Accompagnement scolaire</div>
+          <div class="service-item"><span class="service-dot"></span>Baby-sitting ponctuel</div>
+        </div>
+      </div>
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">💆</div><div><div class="cat-title">Beauté & Bien-être</div><div class="cat-subtitle">Prenez soin de vous à la maison</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Coiffeur / Coiffeuse à domicile</div>
+          <div class="service-item"><span class="service-dot"></span>Soins beauté & esthétique</div>
+          <div class="service-item"><span class="service-dot"></span>Massage & relaxation</div>
+          <div class="service-item"><span class="service-dot"></span>Coiffure enfants & famille</div>
+        </div>
+      </div>
+
+      <div class="cat-card fade-up">
+        <div class="cat-header"><div class="cat-emoji">🚗</div><div><div class="cat-title">Mobilité & Sécurité</div><div class="cat-subtitle">Déplacez-vous sereinement</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Transport & chauffeur privé</div>
+          <div class="service-item"><span class="service-dot"></span>Courses & commissions en ville</div>
+          <div class="service-item"><span class="service-dot"></span>Agent de gardiennage</div>
+          <div class="service-item"><span class="service-dot"></span>Surveillance de domicile</div>
+        </div>
+      </div>
+
+      <div class="cat-card autres fade-up">
+        <div class="cat-header"><div class="cat-emoji" style="background:var(--green-light)">➕</div><div><div class="cat-title">Autres besoins</div><div class="cat-subtitle">Un besoin non listé ? On trouve !</div></div></div>
+        <div class="services-list">
+          <div class="service-item"><span class="service-dot"></span>Décrivez votre besoin librement</div>
+          <div class="service-item"><span class="service-dot"></span>Notre équipe trouve la solution</div>
+          <div class="service-item"><span class="service-dot"></span>En français, mooré ou dioula</div>
+          <div class="service-item"><span class="service-dot"></span>Réponse rapide garantie</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI YIIB-YA -->
+<section class="why-bg">
+  <div class="section-inner">
+    <span class="section-tag">Pourquoi Yiib-Ya ?</span>
+    <h2 class="section-title">Fait pour les familles de Ouagadougou</h2>
+    <p class="section-desc">Yiib-Ya n'est pas une application étrangère. C'est une solution née ici, pensée pour nos réalités.</p>
+    <div class="why-grid">
+      <div class="why-card fade-up"><span class="why-icon">🛡️</span><div class="why-title">Prestataires vérifiés</div><div class="why-desc">Chaque prestataire dans notre réseau est vérifié et sélectionné personnellement par notre équipe avant toute intervention.</div></div>
+      <div class="why-card fade-up"><span class="why-icon">⚡</span><div class="why-title">Intervention en moins d'1h</div><div class="why-desc">Panne de frigo, fuite d'eau, besoin urgent ? Notre réseau couvre tout Ouagadougou pour intervenir rapidement.</div></div>
+      <div class="why-card fade-up"><span class="why-icon">💳</span><div class="why-title">Paiement à votre façon</div><div class="why-desc">Orange Money, Moov Money ou espèces. Vous payez comme vous en avez l'habitude, en toute sécurité.</div></div>
+      <div class="why-card fade-up"><span class="why-icon">🌍</span><div class="why-title">100% local</div><div class="why-desc">Conçu à Ouagadougou, pour Ouagadougou. Notre équipe parle français, mooré et dioula.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe" class="equipe-bg">
+  <div class="section-inner">
+    <span class="section-tag green">Notre équipe</span>
+    <h2 class="section-title">Votre contact direct chez Yiib-Ya</h2>
+    <div class="equipe-intro">
+      <p class="section-desc">Quand vous commandez un service, c'est notre équipe qui prend en charge votre demande, trouve le bon prestataire et s'assure que tout se passe bien.</p>
+    </div>
+    <div class="equipe-grid">
+
+      <div class="equipe-card fade-up">
+        <div class="equipe-avatar">👩🏾</div>
+        <div class="equipe-badge">Coordinatrice de services</div>
+        <div class="equipe-name">Esther</div>
+        <div class="equipe-role">Courses & Livraisons</div>
+        <div class="equipe-desc">Esther gère vos commandes de courses, livraisons et met en relation avec les bons prestataires pour tous vos besoins à domicile.</div>
+        <div class="equipe-contact">
+          <a href="tel:+22651479588">📞 +226 51 47 95 88</a>
+          <a href="https://wa.me/22651479588" target="_blank">💬 WhatsApp</a>
+          <a href="mailto:yiibya@gmail.com">✉️ yiibya@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="equipe-card fade-up">
+        <div class="equipe-avatar">👩🏾</div>
+        <div class="equipe-badge">Coordinatrice de services</div>
+        <div class="equipe-name">Béatrice</div>
+        <div class="equipe-role">Courses & Livraisons</div>
+        <div class="equipe-desc">Béatrice coordonne vos demandes de services, organise les interventions et s'assure que chaque prestataire répond à vos attentes.</div>
+        <div class="equipe-contact">
+          <a href="tel:+22664485717">📞 +226 64 48 57 17</a>
+          <a href="https://wa.me/22664485717" target="_blank">💬 WhatsApp</a>
+          <a href="mailto:yiibya@gmail.com">✉️ yiibya@gmail.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section>
+  <div class="section-inner">
+    <span class="section-tag">Témoignages</span>
+    <h2 class="section-title">Ce que disent nos clients</h2>
+    <p class="section-desc">Des familles de Ouagadougou qui ont simplifié leur quotidien avec Yiib-Ya.</p>
+    <div class="temoignages-grid">
+      <div class="temoignage fade-up">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="temoignage-text">"J'ai appelé Yiib-Ya pour une femme de ménage. En moins d'une heure quelqu'un était chez moi. Ma maison était impeccable. Je n'ai rien eu à chercher !"</div>
+        <div class="temoignage-author"><div class="temoignage-avatar" style="background:#FFF3E8">👩</div><div><div class="temoignage-name">Aïssata M.</div><div class="temoignage-role">Mère de famille, Ouagadougou</div></div></div>
+      </div>
+      <div class="temoignage fade-up">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="temoignage-text">"Mon frigo est tombé en panne un dimanche soir. J'ai contacté Yiib-Ya, ils ont envoyé un frigoriste dans l'heure. Problème réglé. Service incroyable !"</div>
+        <div class="temoignage-author"><div class="temoignage-avatar" style="background:#E8F5EC">👨</div><div><div class="temoignage-name">Ibrahim T.</div><div class="temoignage-role">Chef de famille, Secteur 15</div></div></div>
+      </div>
+      <div class="temoignage fade-up">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="temoignage-text">"Je travaille toute la journée. Yiib-Ya envoie quelqu'un faire les courses et préparer le repas. Mes enfants mangent bien chaque soir. Je recommande à 100% !"</div>
+        <div class="temoignage-author"><div class="temoignage-avatar" style="background:#FFF3E8">👩</div><div><div class="temoignage-name">Mariam Z.</div><div class="temoignage-role">Entrepreneuse, Ouagadougou</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--gray-50)">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div>
+        <span class="section-tag green">Nous contacter</span>
+        <h2 class="section-title">Commander un service ou nous écrire</h2>
+        <p class="section-desc">Décrivez votre besoin, notre équipe vous répond rapidement et organise tout pour vous.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-item-text">
+              <h4>Téléphone & WhatsApp</h4>
+              <a href="tel:+22651479588">+226 51 47 95 88</a><br>
+              <a href="tel:+22664485717">+226 64 48 57 17</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-item-text">
+              <h4>Email</h4>
+              <a href="mailto:yiibya@gmail.com">yiibya@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <h4>Zone de couverture</h4>
+              <p>Ouagadougou, Burkina Faso</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div class="contact-item-text">
+              <h4>Disponibilité</h4>
+              <p>7 jours sur 7 · Urgences acceptées</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Prénom</label><input type="text" placeholder="Votre prénom" required></div>
+            <div class="form-group"><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+          </div>
+          <div class="form-group"><label>Téléphone / WhatsApp</label><input type="tel" placeholder="+226 XX XX XX XX" required></div>
+          <div class="form-group">
+            <label>Service souhaité</label>
+            <select>
+              <option>Maison & Propreté (ménage, linge, repassage...)</option>
+              <option>Réparations & Urgences (plombier, électricien...)</option>
+              <option>Courses & Alimentation (marché, cuisine...)</option>
+              <option>Famille & Enfants (nounou, répétiteur...)</option>
+              <option>Beauté & Bien-être (coiffure, soins...)</option>
+              <option>Mobilité & Sécurité (transport, gardiennage...)</option>
+              <option>Autre besoin</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Décrivez votre besoin</label><textarea rows="4" placeholder="Ex : J'ai besoin d'une femme de ménage demain matin de 8h à 12h pour un appartement de 3 pièces..."></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;text-align:center">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Yiib<span>-Ya</span></div>
+      <div class="footer-tagline">Votre maison, nos mains — Ouagadougou.</div>
+    </div>
+    <div class="footer-right">
+      <div>
+        <a href="#comment">Comment ça marche</a>
+        <a href="#services">Services</a>
+        <a href="#equipe">Notre équipe</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.25);margin-top:0.5rem">© 2025 Yiib-Ya · Ouagadougou, Burkina Faso · yiibya@gmail.com</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✅ Demande envoyée ! On vous contacte bientôt.';
+  btn.style.background = '#2A7A3B';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Envoyer ma demande';
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 4000);
+}
+</script>
+</body>
+</html>
